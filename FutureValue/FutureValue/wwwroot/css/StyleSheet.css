@@ -3,20 +3,44 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
- 
+
 h1 {
     margin-top: 0;
     color: navy;
 }
 
- 
+
 label {
     display: inline-block;
     width: 10em;
     padding-right: 1em;
 }
 
- 
+
 div {
     margin-bottom: .5em;
+    background-color: green;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+button {
+    padding: 5px;
+    border-radius: 8px;
+    margin-right: 75px;
+    cursor: pointer;
+}
+
+form div:nth-child(4) {
+    background-color: #f0f8ff; /* Light blue background color */
+    padding: 10px;
+    border: 1px solid #b0c4de; /* Light steel blue border */
+    border-radius: 8px;
+}
+
+.clear {
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 8px;
 }

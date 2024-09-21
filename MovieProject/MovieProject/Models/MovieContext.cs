@@ -33,7 +33,7 @@ namespace MovieProject.Models
             modelBuilder.Entity<Movie>().HasData(
                 new Movie
                 {
-                    MovieID = 1,
+                    MovieId = 1,
                     Name = "Casablanca",
                     Year = 1942,
                     Rating = 5,
@@ -41,7 +41,7 @@ namespace MovieProject.Models
                 },
                 new Movie
                 {
-                    MovieID = 2,
+                    MovieId = 2,
                     Name = "Wonder Woman",
                     Year = 2017,
                     Rating = 3,
@@ -49,7 +49,7 @@ namespace MovieProject.Models
                 },
                 new Movie
                 {
-                    MovieID = 3,
+                    MovieId = 3,
                     Name = "Moonstruck",
                     Year = 1988,
                     Rating = 4,

@@ -14,12 +14,16 @@ namespace MovieProject.Controllers
         [HttpGet]
         public IActionResult Add() {
             ViewBag.Action = "Add";
+            ViewBag.Genres
+                = context.Genres.OrderBy(g => g.Name).ToList();
             return View("Edit", new Movie());
         }
 
         [HttpGet]
         public IActionResult Edit(int id) {
             ViewBag.Action = "Edit";
+            ViewBag.Genres
+                = context.Genres.OrderBy(g => g.Name).ToList();
             var movie = context.Movies.Find(id);
             return View(movie);
         }
@@ -27,7 +31,7 @@ namespace MovieProject.Controllers
         [HttpPost]
         public IActionResult Edit(Movie movie) {
             if (ModelState.IsValid) {
-                if (movie.MovieID == 0)
+                if (movie.MovieId == 0)
                     context.Movies.Add(movie);
                 else
                     context.Movies.Update(movie);
@@ -35,7 +39,10 @@ namespace MovieProject.Controllers
                 return RedirectToAction("Index", "Home");
             } else {
                 ViewBag.Action =
-                    (movie.MovieID == 0) ? "Add" : "Edit";
+                    (movie.MovieId == 0) ? "Add" : "Edit";
+                ViewBag.Genres =
+                     context.Genres.OrderBy(g => g.Name).ToList();
+
                 return View(movie);
             }
         }

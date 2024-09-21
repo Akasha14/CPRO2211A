@@ -4,10 +4,10 @@ namespace MovieProject.Models
 {
     public class Movie
     {
-        public int MovieID { get; set; }
+        public int MovieId { get; set; }
 
         [Required(ErrorMessage = "Please enter a name.")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [Required(ErrorMessage = "Please enter a year.")]
         [Range(1889, 2999, ErrorMessage = "Year must be after 1889.")]
@@ -18,8 +18,8 @@ namespace MovieProject.Models
         public int? Rating { get; set; }
 
         [Required(ErrorMessage = "Please enter a genre.")]
-        public string GenreId { get; set; }
-        public Genre Genre { get; set; }
+        public string? GenreId { get; set; }
+        public Genre? Genre { get; set; }
 
     }
 }

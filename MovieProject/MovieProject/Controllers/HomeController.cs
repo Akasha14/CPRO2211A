@@ -14,7 +14,8 @@ namespace MovieProject.Controllers
         {
             context = ctx;
         }
-
+        // Index method, default page.
+        [Route("/")]
         public IActionResult Index()
         {
             var movies = context.Movies.Include(m => m.Genre)

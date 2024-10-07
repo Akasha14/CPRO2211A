@@ -14,10 +14,9 @@ namespace Assignment1_App.Models
         [Range(0, 100, ErrorMessage = "Discount percent must be between 0 and 100.")]
         public decimal DiscountPercent { get; set; }
 
-        // Calculate amount to be taken off.
         public decimal DiscountAmount {
             get
-               // Divide users desired percent by 100, then multiply by total entered.
+               
             {
                 return Subtotal * (DiscountPercent / 100);
             }

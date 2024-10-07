@@ -1,0 +1,44 @@
+﻿@model Assignment1_App.Models.QuoteModel
+
+@{
+    ViewData["Title"] = "Price Quotation";
+}
+@* Importing CSS. *@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <div>
+        <label for="subtotal">Subtotal:</label>
+        <input type="text" id="subtotal" name="Subtotal"/>
+        @* Display Validation Message *@
+        @Html.ValidationMessageFor(m => m.Subtotal)
+    </div>
+
+    <div>
+        <label for="discountPercent">Discount Percent:</label>
+        <input type="text" id="discountPercent" name="DiscountPercent"/>
+        @* Display Validation Message *@
+        @Html.ValidationMessageFor(m => m.DiscountPercent)
+    </div>
+
+    @* If Valid entries, show this. *@
+    @if (ViewData.ModelState.IsValid)
+    {
+        <div class="divSpacing">
+            <label>Discount Amount:</label>
+            <span class="discountAmount">@Model.DiscountAmount.ToString("C")</span>
+        </div>
+
+        <div class="divSpacing">
+            <label>Total:</label>
+            <span class="totalAmount">@Model.Total.ToString("C")</span>
+        </div>
+    }
+
+    <div class="buttonArea">
+        <button class="calculateButton" type="submit">Calculate</button>
+        <a href="@Url.Action("Clear")">Clear</a>
+    </div>
+</form>

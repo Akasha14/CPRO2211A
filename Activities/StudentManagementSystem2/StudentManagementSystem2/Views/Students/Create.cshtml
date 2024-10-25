@@ -1,0 +1,64 @@
+﻿@model StudentManagementSystem2.Models.Student
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <!-- Section for adding multiple emails -->
+            <div id="email-list">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input name="Emails" class="form-control" />
+                </div>
+            </div>
+            <button type="button" onclick="addEmailInput()">
+                Add Another
+                Email
+            </button>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        <script>
+            function addEmailInput()
+            {
+             var emailInput = '<div class="form-group"><label>Email</label><input
+            name="Emails" class="form-control" /></div>';
+             document.getElementById('email-list').insertAdjacentHTML('beforeend',
+            emailInput);
+            }
+        </script>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<!-- The user can add multiple emails dynamically, posted to an array. -->
+<!-- A simple JavaScript function (addEmailInput) adds additional email fields when clicked. -->

@@ -1,0 +1,45 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Contact Details";
+}
+
+<h2>Contact Details</h2>
+<table>
+    <tr>
+        <td>Name:</td>
+        <td>@Model.firstName @Model.lastName</td>
+    </tr>
+    <tr>
+        <td>Phone:</td>
+        <td>@Model.phoneNumber</td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td>@Model.email</td>
+    </tr>
+    <tr>
+        <td>Organization:</td>
+        <td>@Model.organization</td>
+    </tr>
+    <tr>
+        <td>Category:</td>
+        <td>@Model.Category.name</td>
+    </tr>
+    <tr>
+        <td>Date Added:</td>
+        <td>@Model.dateAdded.ToString("MM/dd/yyyy 'at' hh:mm tt")</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <!-- Edit button -->
+            <a href="@Url.Action("AddEdit", "Contacts", new { id = Model.contactId, slug = Model.Slug })" class="btn dimgray-btn">Edit</a>
+
+            <!-- Delete button -->
+            <a href="@Url.Action("Delete", "Contacts", new { id = Model.contactId, slug = Model.Slug })" class="btn dimgray-btn">Delete</a>
+
+            <!-- Home button -->
+            <a href="@Url.Action("Index", "Contacts")" class="btn dimgray-btn">Home</a>
+
+        </td>
+    </tr>
+</table>

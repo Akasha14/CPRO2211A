@@ -1,0 +1,54 @@
+﻿@model Contact
+@{
+    // Check if contactId = 0, meaning new contact.
+    ViewData["Title"] = Model.contactId == 0 ? "Add Contact" : "Edit Contact";
+}
+
+<h2>@ViewData["Title"]</h2>
+<form asp-action="AddEdit" asp-controller="Contacts" method="post" class="form-container">
+    <input type="hidden" asp-for="contactId" />
+
+    <!-- Validation Summary to display any errors -->
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="formEntry">
+        <label asp-for="firstName" class="form-label">First Name</label>
+        <input asp-for="firstName" class="form-control" />
+        <span asp-validation-for="firstName" class="text-danger"></span>
+    </div>
+
+    <div class="formEntry">
+        <label asp-for="lastName" class="form-label">Last Name</label>
+        <input asp-for="lastName" class="form-control" />
+        <span asp-validation-for="lastName" class="text-danger"></span>
+    </div>
+
+    <div class="formEntry">
+        <label asp-for="phoneNumber" class="form-label">Phone</label>
+        <input asp-for="phoneNumber" class="form-control" />
+        <span asp-validation-for="phoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="formEntry">
+        <label asp-for="email" class="form-label">Email</label>
+        <input asp-for="email" class="form-control" />
+        <span asp-validation-for="email" class="text-danger"></span>
+    </div>
+
+    <div class="formEntry">
+        <label asp-for="organization" class="form-label">Organization</label>
+        <input asp-for="organization" class="form-control" />
+    </div>
+
+    <div class="formEntry">
+        <label asp-for="categoryId" class="form-label">Category</label>
+        <select asp-for="categoryId" asp-items="@(new SelectList(ViewData["Categories"] as List<Category>, "categoryId", "name"))" class="form-select"></select>
+        <span asp-validation-for="categoryId" class="text-danger"></span>
+    </div>
+
+    <!-- Buttons -->
+    <button type="submit" class="btn blue-btn">Save</button>
+</form>
+
+<!-- Cancel  -->
+<a href="@Url.Action("Index", "Contacts")" class="btn dimgray-btn">Cancel</a>

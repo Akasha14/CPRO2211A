@@ -8,13 +8,11 @@
 <form asp-action="AddEdit" asp-controller="Contacts" method="post" class="form-container">
     <input type="hidden" asp-for="contactId" />
 
-    <!-- Validation Summary to display any errors -->
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
     <div class="formEntry">
         <label asp-for="firstName" class="form-label">First Name</label>
         <input asp-for="firstName" class="form-control" />
-        <span asp-validation-for="firstName" class="text-danger"></span>
+        <!-- This line displays the validation message if field is invalid. Not used in organization -->
+        <span asp-validation-for="firstName" class="text-danger"></span> 
     </div>
 
     <div class="formEntry">
@@ -42,7 +40,10 @@
 
     <div class="formEntry">
         <label asp-for="categoryId" class="form-label">Category</label>
-        <select asp-for="categoryId" asp-items="@(new SelectList(ViewData["Categories"] as List<Category>, "categoryId", "name"))" class="form-select"></select>
+        <!-- Categories as dropdown list. -->
+        <select asp-for="categoryId" asp-items="@(new SelectList(ViewData["Categories"]
+        as List<Category>, "categoryId", "name"))" class="form-select"></select>
+
         <span asp-validation-for="categoryId" class="text-danger"></span>
     </div>
 

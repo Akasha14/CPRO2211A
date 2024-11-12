@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+<h2>Welcome to the Bookstore Dashboard</h2>
+<button onclick="logout()">Logout</button>
+<script>
+    const token = localStorage.getItem('jwtToken'); // Retrieve JWT token
+    if (!token) {
+        window.location.href = '/Auth/Login'; // Redirect if no token
+    }
+    function logout() {
+        localStorage.removeItem('jwtToken'); // Clear token
+        window.location.href = '/Auth/Login';
+    }
+</script>

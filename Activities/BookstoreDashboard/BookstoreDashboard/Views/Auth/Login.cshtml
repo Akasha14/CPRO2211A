@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+
+<form id="loginForm">
+    <div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required />
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+    </div>
+    <button type="submit">Login</button>
+</form>
+
+<div id="errorMessage" style="color: red;"></div>
+
+<script>
+    // Form submission to send login credentials to Auth API
+    document.getElementById('loginForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Send POST request to Auth API
+        const response = await fetch('/api/Auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem('jwtToken', data.token);  // Store JWT in localStorage
+            window.location.href = '/Dashboard'; // Redirect to dashboard on success
+
+        } else {
+            document.getElementById('errorMessage').textContent = 'Invalid credentials';
+        }
+
+    });
+</script>

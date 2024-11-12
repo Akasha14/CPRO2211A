@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Contacts";
 }
+<!-- Link to add new contact. -->
 <a href="@Url.Action("AddEdit", "Contacts")">Add Contact</a>
 
 <table>
@@ -15,6 +16,7 @@
         </tr>
     </thead>
     <tbody>
+        <!-- Displays all contacts in Model. -->
         @foreach (var contact in Model)
         {
             <tr>
